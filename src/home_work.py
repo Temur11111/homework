@@ -22,3 +22,4 @@ class Category
         name = self.name
         description = self.description
         products = self.products
+classmethod
