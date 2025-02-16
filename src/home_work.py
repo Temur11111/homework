@@ -1,30 +1,31 @@
-from symtable import Class
 
-class Product
-  """Создание класса продуктов"""
-    name = str
-    description = str
-    price = float
-    quantity = int
+class Product:
+    """Создание класса продуктов"""
+    name: str
+    description: str
+    price: float
+    quantity: int
 
     def __init__(self, name, description, price, quantity):
-        name = self.name
-        description = self.description
-        price = self.price
-        quantity = self.quantity
+        self.name = name
+        self.description = description
+        self.price = price
+        self.quantity = quantity
 
-class Category
-   """Создание класса категории"""
-    name = str
-    description = str
-    products = list
+class Category:
+    """Создание класса категории"""
+    name: str
+    description: str
+    products: list
 
-   number_of_categories = 0###Колиество категории
-   number_of_products = 0 ###Количество товаров
+    number_of_categories = 0###Количество категории
+    number_of_products = 0 ###Количество товаров
 
     def __init__(self, name, description, products):
-        name = self.name
-        description = self.description
-        products = self.products
-        number_of_categories+=1
-        number_of_products = len(self.products)
+        self.name = name
+        self.description = description
+        self.products = products
+
+        Category.number_of_categories += 1
+        Category.number_of_products += len(self.products)
+
