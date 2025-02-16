@@ -14,12 +14,17 @@ class Product
         quantity = self.quantity
 
 class Category
+   """Создание класса категории"""
     name = str
     description = str
     products = list
+
+   number_of_categories = 0###Колиество категории
+   number_of_products = 0 ###Количество товаров
 
     def __init__(self, name, description, products):
         name = self.name
         description = self.description
         products = self.products
-classmethod
+        number_of_categories+=1
+        number_of_products = len(self.products)
