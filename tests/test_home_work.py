@@ -22,6 +22,7 @@ def test_number_of_categories():
     assert Category.number_of_categories == 2
 
 def test_number_of_products():
+    """тест проверки правильности подсчета количества продуктов"""
     category_1 = Category("Фрукты", "Свежие фрукты", ["яблоко", "банан", "огурец"])
     category_2 = Category("Овощи", "Свежие овощи", ["морковь", "огурец", "помидор"])
     assert Category.number_of_products == 6
