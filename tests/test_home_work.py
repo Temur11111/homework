@@ -1,4 +1,5 @@
 from src.home_work import Category, Product
+import pytest
 
 def test_product_initialization():
     """тест инициализации класса продуктов"""
@@ -14,6 +15,12 @@ def test_category_initialization():
     assert category.name == "Test Name"
     assert category.description == "Test Description"
     assert category.products == ["Test Product", "Test Product_1"]
+
+@pytest.fixture(autouse=True)
+def reset_category_counts():
+    # Перед каждым тестом обнуляем количество категорий и продуктов
+    Category.number_of_categories = 0
+    Category.number_of_products = 0
 
 def test_number_of_categories():
     """тест проверки правильности подсчета количества категории"""
