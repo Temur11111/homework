@@ -1,4 +1,6 @@
-from src.home_work import Category, Product
+from src.Product import Product
+from src.Category import Category
+
 import pytest
 
 def test_product_initialization():
