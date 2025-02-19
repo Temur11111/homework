@@ -1,5 +1,8 @@
-from src.home_work import Category, Product
 import pytest
+from src.Product import Product
+from src.Category import Category
+
+
 
 def test_product_initialization():
     """тест инициализации класса продуктов"""
