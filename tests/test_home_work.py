@@ -1,7 +1,8 @@
+import pytest
 from src.Product import Product
 from src.Category import Category
 
-import pytest
+
 
 def test_product_initialization():
     """тест инициализации класса продуктов"""

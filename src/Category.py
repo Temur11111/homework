@@ -20,13 +20,3 @@ class Category:
         Category.number_of_products += len(products)  # увеличиваем общее количество продуктов
 
 
-category_1 = Category("Фрукты", "Свежие фрукты", ["яблоко", "банан"])
-category_2 = Category("Фрукты", "Свежие фрукты", ["яблоко", "банан", "eq"])
-category_3 = Category("Фрукты", "Свежие фрукты", ["яблоко", "банан", "eq"])
-
-print(Category.number_of_products)
-#print(Category.number_of_categories)
-
-
-category_1.add_products_in_category("ghbjhb","ивыиы","мттывмо","sdjnv")
-print(Category.number_of_products)
