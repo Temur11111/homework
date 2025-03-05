@@ -14,8 +14,11 @@ class Product:
 
     def __str__(self):
         """метод возвращающий человечное представление экземпляра класса (конкретного продукта)"""
-        return f"Наименование: {self.name}, Описание: {self.description}, Цена: {self.__price}, Количество: {self.quantity}"
+        return f"Название продукта: {self.name}, Цена: {self.__price}, Остаток: {self.quantity}"
 
+    def __add__(self, other):
+        """метод сложения: реализует вывод общей стоимости двух товаров по логике остаток(1 товара)*цену(1 товара)+остаток(2 товара)*цена(2 товара)"""
+        return  self.__price*self.quantity + other.__price*other.quantity
 
     @classmethod
     def new_product(cls, product: dict):
@@ -42,3 +45,7 @@ class Product:
 
 
 
+product_1 = Product("яблоко", "зеленое", 10, 7)
+product_2 = Product("банан", "желтый", 5, 40)
+
+print(product_1)
