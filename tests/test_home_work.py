@@ -102,3 +102,28 @@ def test_price_setter_incorrect_value():
 
     # Цена не должна измениться
     assert product.return_price == 199.99
+
+
+def test_category_str_method():
+    """тест правильности выполнения метода Str для класса Category (проверка выдачи правильной строки)"""
+    product_1 = Product("яблоко", "зеленое", 10, 7)
+    product_2 = Product("банан", "желтый", 5, 40)
+    category_1 = Category("Фрукты", "Свежие")
+    category_1.add_products_in_category(product_1)
+    category_1.add_products_in_category(product_2)
+    expected_str = "Наименование: Фрукты, Количество товаров в категории: 47"
+    assert category_1.__str__() == expected_str
+
+def test_product_str_method():
+    """тест правильности выполнения метода Str для класса Product (проверка выдачи правильной строки)"""
+    product_1 = Product("яблоко", "зеленое", 10, 7)
+    expected_str = "Название продукта: яблоко, Цена: 10, Остаток: 7"
+    assert product_1.__str__() == expected_str
+
+def test_add_method_in_product():
+    """тест правильной работы метода add в классе Product"""
+    product_1 = Product("яблоко", "зеленое", 10, 7)
+    product_2 = Product("банан", "желтый", 5, 40)
+    expected_total_price = (10 * 7) + (5 * 40)
+    assert product_1 + product_2 == expected_total_price
+

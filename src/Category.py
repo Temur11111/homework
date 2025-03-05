@@ -1,4 +1,4 @@
-from src.Product import Product
+from src.Product import Product, product_1, product_2
 
 
 class Category:
@@ -18,7 +18,10 @@ class Category:
 
     def __str__(self):
         """метод возвращающий человечное представление экземпляра класса (конкретной категории товаров)"""
-        return f"Наименование: {self.name}, Описание: {self.description}, Количество товаров в категории: {Category.number_of_products}"
+        quantity_summ = 0
+        for product in self.__products:### осуществление перебора по всем продуктам(экземплярам класса Product) и сложение остатков товаров по всем продуктам определенной категории
+            quantity_summ += product.quantity
+        return f"Наименование: {self.name}, Количество товаров в категории: {quantity_summ}"
 
 
     def add_products_in_category(self, product: Product):
@@ -32,3 +35,9 @@ class Category:
         """геттер для вывода товаров в категории (так как список товаров приватный)"""
         return self.__products
 
+category_1 = Category("Фрукты", "Свежие")
+
+category_1.add_products_in_category(product_1)
+category_1.add_products_in_category(product_2)
+
+print(category_1)
