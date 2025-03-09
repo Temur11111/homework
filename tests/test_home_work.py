@@ -1,10 +1,10 @@
 from itertools import product
 
 import pytest
-from src.Product import Product
-from src.Category import Category
 
-
+from src.Product import Product, product_2, product_1
+from src.Category import Category, category_1
+from src.child_class import Smartphone, LawnGrass, smartphone_2, smartphone_1, grass_1
 
 def test_product_initialization():
     """тест инициализации класса продуктов"""
@@ -25,6 +25,7 @@ def test_category_initialization():
 def reset_category_counts():
     # Перед каждым тестом обнуляем количество категорий и продуктов
     Category.number_of_categories = 0
+    Category.number_of_products = 0
 
 
 def test_number_of_categories():
@@ -42,6 +43,7 @@ def test_add_products_in_category():
     category_1.add_products_in_category(product_1)
     category_1.add_products_in_category(product_2)
     assert len(category_1.return_products) == 2
+
 
 
 
@@ -127,3 +129,27 @@ def test_add_method_in_product():
     expected_total_price = (10 * 7) + (5 * 40)
     assert product_1 + product_2 == expected_total_price
 
+def test_false_add_method_in_product():
+    """тест выдачи ошибки метода add в классе Product"""
+    product_1 = Product("яблоко", "зеленое", 10, 7)
+    grass_1 = LawnGrass("полынь", "сорняк", 1, 1, "Россия", 2, "зеленый")
+    with pytest.raises(ValueError) as excinfo:
+        product_1 + grass_1  # Попытка сложения объектов разных классов
+    # Проверяем сообщение об ошибке
+    assert str(excinfo.value) == "Ошибка!!!!Складывать можно только объекты одного класса!!!!"
+
+def test_add_products_in_category():
+    """тест выдачи ошибки метода добавления продуктов в категорию"""
+    # Создаем другой класс для тестирования
+    class OtherProduct:
+        def __init__(self, name, price, quantity):
+            self.name = name
+            self.__price = price
+            self.quantity = quantity
+    # Создаем экземпляр другого класса
+    other_product = OtherProduct("Товар 2", 20.0, 2)
+    # Проверяем, что при добавление экземпляра другого класса возникает ValueError
+    with pytest.raises(ValueError) as excinfo:
+        category_1.add_products_in_category(other_product)  # Попытка добавления объекта другого класса
+    # Проверяем сообщение об ошибке
+    assert str(excinfo.value) == "Ошибка!!!!Добавлять можно только объекты класса Product, либо объекты классов его наследников"
