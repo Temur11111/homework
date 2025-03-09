@@ -18,7 +18,10 @@ class Product:
 
     def __add__(self, other):
         """метод сложения: реализует вывод общей стоимости двух товаров по логике остаток(1 товара)*цену(1 товара)+остаток(2 товара)*цена(2 товара)"""
-        return  self.__price*self.quantity + other.__price*other.quantity
+        if type(self) == type(other):
+            return  self.__price*self.quantity + other.__price*other.quantity
+        else:
+            raise ValueError("Ошибка!!!!Складывать можно только объекты одного класса!!!!")
 
     @classmethod
     def new_product(cls, product: dict):
@@ -48,4 +51,3 @@ class Product:
 product_1 = Product("яблоко", "зеленое", 10, 7)
 product_2 = Product("банан", "желтый", 5, 40)
 
-print(product_1)

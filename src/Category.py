@@ -1,4 +1,5 @@
 from src.Product import Product, product_1, product_2
+from src.child_class import LawnGrass, Smartphone, grass_1
 
 
 class Category:
@@ -24,10 +25,13 @@ class Category:
         return f"Наименование: {self.name}, Количество товаров в категории: {quantity_summ}"
 
 
-    def add_products_in_category(self, product: Product):
+    def add_products_in_category(self, product):
         """метод добавления нескольких товаров в определенную категорию"""
-        self.__products.append(product)  # добавляем новые продукты в список
-        Category.number_of_products += 1  # увеличиваем количество продуктов(товаров) в категориии
+        if isinstance(product, Product):
+            Category.number_of_products += 1  # увеличиваем количество продуктов(товаров) в категориии
+            self.__products.append(product)  # добавляем новые продукты в список
+        else:
+            raise ValueError("Ошибка!!!!Добавлять можно только объекты класса Product, либо объекты классов его наследников")
 
 
     @property
@@ -39,5 +43,7 @@ category_1 = Category("Фрукты", "Свежие")
 
 category_1.add_products_in_category(product_1)
 category_1.add_products_in_category(product_2)
+category_1.add_products_in_category(grass_1)
+category_1.add_products_in_category(product_1)
 
-print(category_1)
+print(Category.number_of_products)
