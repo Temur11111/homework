@@ -1,10 +1,11 @@
-from itertools import product
+
 
 import pytest
 
-from src.Product import Product, product_2, product_1
-from src.Category import Category, category_1
-from src.child_class import Smartphone, LawnGrass, smartphone_2, smartphone_1, grass_1
+
+from src.Product import Product
+from src.Category import Category
+from src.child_class import LawnGrass
 
 def test_product_initialization():
     """тест инициализации класса продуктов"""
@@ -138,7 +139,7 @@ def test_false_add_method_in_product():
     # Проверяем сообщение об ошибке
     assert str(excinfo.value) == "Ошибка!!!!Складывать можно только объекты одного класса!!!!"
 
-def test_add_products_in_category():
+def test_false_add_products_in_category():
     """тест выдачи ошибки метода добавления продуктов в категорию"""
     # Создаем другой класс для тестирования
     class OtherProduct:
@@ -150,6 +151,7 @@ def test_add_products_in_category():
     other_product = OtherProduct("Товар 2", 20.0, 2)
     # Проверяем, что при добавление экземпляра другого класса возникает ValueError
     with pytest.raises(ValueError) as excinfo:
+        category_1 = Category("Фрукты", "Свежие")
         category_1.add_products_in_category(other_product)  # Попытка добавления объекта другого класса
     # Проверяем сообщение об ошибке
     assert str(excinfo.value) == "Ошибка!!!!Добавлять можно только объекты класса Product, либо объекты классов его наследников"

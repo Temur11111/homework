@@ -1,5 +1,4 @@
-from src.Product import Product, product_1, product_2
-
+from src.Product import Product
 
 class Smartphone(Product):
     efficiency = float ### производительность
@@ -27,8 +26,5 @@ class LawnGrass(Product):
 
 
 
-smartphone_1 = Smartphone("Nokia", "Кнопочный", 5, 2, 1, "3350", 32, "черный")
-smartphone_2 = Smartphone("Nokia", "Кнопочный", 6, 1, 1, "3350", 32, "черный")
 
-grass_1 = LawnGrass("полынь", "сорняк", 1, 1, "Россия", 2, "зеленый")
 

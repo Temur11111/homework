@@ -1,0 +1,38 @@
+# Указывает на конфиденциальные файлы
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Указывает на виртуальные окружения
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Указывает на файлы среды
+*.env
+*.env.local
+*.env.*.local
+
+# Указывает на системные файлы
+.DS_Store
+Thumbs.db
+
+# Указывает на временные файлы
+*.log
+*.tmp
+*.temp
+
+# Указывает на файлы кеша
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Указывает на файлы настроек IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
