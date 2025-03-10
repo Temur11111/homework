@@ -48,6 +48,4 @@ class Product:
 
 
 
-product_1 = Product("яблоко", "зеленое", 10, 7)
-product_2 = Product("банан", "желтый", 5, 40)
 

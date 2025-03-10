@@ -1,6 +1,4 @@
-from src.Product import Product, product_1, product_2
-from src.child_class import LawnGrass, Smartphone, grass_1
-
+from src.Product import Product
 
 class Category:
     """Создание класса категории"""
@@ -28,7 +26,7 @@ class Category:
     def add_products_in_category(self, product):
         """метод добавления нескольких товаров в определенную категорию"""
         if isinstance(product, Product):
-            Category.number_of_products += 1  # увеличиваем количество продуктов(товаров) в категориии
+            Category.number_of_products += 1  # увеличиваем количество продуктов(товаров) в категории
             self.__products.append(product)  # добавляем новые продукты в список
         else:
             raise ValueError("Ошибка!!!!Добавлять можно только объекты класса Product, либо объекты классов его наследников")
@@ -39,11 +37,4 @@ class Category:
         """геттер для вывода товаров в категории (так как список товаров приватный)"""
         return self.__products
 
-category_1 = Category("Фрукты", "Свежие")
 
-category_1.add_products_in_category(product_1)
-category_1.add_products_in_category(product_2)
-category_1.add_products_in_category(grass_1)
-category_1.add_products_in_category(product_1)
-
-print(Category.number_of_products)
