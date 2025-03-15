@@ -1,4 +1,8 @@
-class Product:
+from src.Mixin_Class import Mixin_description_class
+from src.abstract_class import BaseProduct
+
+
+class Product(BaseProduct, Mixin_description_class):
     """Создание класса продуктов"""
     name: str
     description: str
@@ -11,6 +15,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self):
         """метод возвращающий человечное представление экземпляра класса (конкретного продукта)"""
