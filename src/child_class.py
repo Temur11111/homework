@@ -1,4 +1,5 @@
 from src.Product import Product
+from src.abstract_class import BaseProduct
 
 class Smartphone(Product):
     efficiency = float ### производительность
@@ -22,8 +23,6 @@ class LawnGrass(Product):
         self.country = country
         self.germination_period = germination_period
         self.color = color
-
-
 
 
 

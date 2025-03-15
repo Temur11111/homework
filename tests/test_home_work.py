@@ -7,6 +7,7 @@ from src.Product import Product
 from src.Category import Category
 from src.child_class import LawnGrass
 
+
 def test_product_initialization():
     """тест инициализации класса продуктов"""
     product = Product("Test Product", "Test Description", 100.0, 10)
@@ -155,3 +156,14 @@ def test_false_add_products_in_category():
         category_1.add_products_in_category(other_product)  # Попытка добавления объекта другого класса
     # Проверяем сообщение об ошибке
     assert str(excinfo.value) == "Ошибка!!!!Добавлять можно только объекты класса Product, либо объекты классов его наследников"
+
+
+def test_mixin_repr():
+    """Тест метода __repr__ класса Mixin_description_class, который используется при создании экземпляра класса Product и дочерних"""
+    # Создаем экземпляр класса Product
+
+    product_1 = Product("Яблоко", "зеленое", 10, 10)
+    # Ожидаемое строковое представление
+    expected_repr = "Название продукта: Яблоко, Описание:зеленое, Остаток: 10"
+    # Проверяем, что метод __repr__ возвращает ожидаемую строку
+    assert repr(product_1) == expected_repr, "Метод __repr__ класса Product возвращает некорректное значение"
