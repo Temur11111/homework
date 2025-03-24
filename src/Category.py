@@ -1,4 +1,5 @@
-from src.Product import Product
+from src.Product import Product, product_1, product_2, product_3
+
 
 class Category:
     """Создание класса категории"""
@@ -38,3 +39,11 @@ class Category:
         return self.__products
 
 
+    def middle_price(self):
+        """метод подсчитывающий среднюю цену товаров категории"""
+        try:
+            total_price = sum(product.return_price for product in self.__products)  # Сумма цен всех товаров
+            middle = total_price / len(self.__products)  # Средняя цена
+            return middle
+        except ZeroDivisionError:
+            return 0.0

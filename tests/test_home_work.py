@@ -16,6 +16,15 @@ def test_product_initialization():
     assert product.return_price == 100.0
     assert product.quantity == 10
 
+
+def test_product_initialization_zero_quantity():
+    """Тест для проверки исключения при инициализации с нулевым количеством."""
+
+    with pytest.raises(ValueError) as exc_info:
+        Product("Товар 2", "Описание товара 2", 50.0, 0)
+    assert str(
+        exc_info.value) == "Товар с нулевым количеством не может быть добавлен!!!", "Должно выбрасываться правильное сообщение об ошибке."
+
 def test_category_initialization():
     """ тест инициализации класса категории"""
     category = Category("Test Name", "Test Description")
@@ -167,3 +176,46 @@ def test_mixin_repr():
     expected_repr = "Название продукта: Яблоко, Описание:зеленое, Остаток: 10"
     # Проверяем, что метод __repr__ возвращает ожидаемую строку
     assert repr(product_1) == expected_repr, "Метод __repr__ класса Product возвращает некорректное значение"
+
+
+def test_middle_price_with_no_products():
+    """Тест для проверки средней цены при отсутствии продуктов в категории."""
+    category = Category("Тестовая категория", "Описание тестовой категории")
+    assert category.middle_price() == 0.0, "Средняя цена должна быть 0.0, если нет продуктов."
+
+
+def test_middle_price_with_one_product():
+    """Тест для проверки средней цены с одним продуктом в категории."""
+    category = Category("Тестовая категория", "Описание тестовой категории")
+    product = Product("Товар 1", 100.0, 10, 2)
+    category.add_products_in_category(product)
+
+    assert category.middle_price() == 10.0, "Средняя цена должна быть равна цене единственного продукта."
+
+
+def test_middle_price_with_multiple_products():
+    """Тест для проверки средней цены с несколькими продуктами в категории."""
+    category = Category("Тестовая категория", "Описание тестовой категории")
+    product1 = Product("Товар 1", 100.0, 10,1)
+    product2 = Product("Товар 2", 200.0, 5,2)
+    product3 = Product("Товар 3", 300.0, 2,1)
+
+    category.add_products_in_category(product1)
+    category.add_products_in_category(product2)
+    category.add_products_in_category(product3)
+
+    expected_average = (10 + 5 + 2) / 3
+    assert category.middle_price() == expected_average, f"Средняя цена должна быть {expected_average}."
+
+
+def test_middle_price_with_products_of_same_price():
+    """Тест для проверки средней цены с несколькими продуктами, имеющими одинаковую цену."""
+    category = Category("Тестовая категория", "Описание тестовой категории")
+    product1 = Product("Товар 1", 150.0, 10,1)
+    product2 = Product("Товар 2", 150.0, 10,2)
+
+    category.add_products_in_category(product1)
+    category.add_products_in_category(product2)
+
+    expected_average = 10
+    assert category.middle_price() == expected_average, f"Средняя цена должна быть {expected_average}."

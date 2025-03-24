@@ -1,3 +1,5 @@
+from itertools import product
+
 from src.Mixin_Class import Mixin_description_class
 from src.abstract_class import BaseProduct
 
@@ -16,6 +18,9 @@ class Product(BaseProduct, Mixin_description_class):
         self.__price = price
         self.quantity = quantity
         super().__init__()
+        if self.quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен!!!")
+
 
     def __str__(self):
         """метод возвращающий человечное представление экземпляра класса (конкретного продукта)"""
@@ -54,3 +59,6 @@ class Product(BaseProduct, Mixin_description_class):
 
 
 
+product_1 = Product("Апельсин", "оранжевый", 1, 2)
+product_2 = Product("Банан", "желтый", 2, 1)
+product_3 = Product("киви", "зеленый", 3, 1)
